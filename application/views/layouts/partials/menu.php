@@ -18,32 +18,23 @@
                                                                 <a href="<?php echo site_url('registrasi/register_surat')?>" class="menu-link">
                                                                     <span class="menu-text">Register Surat</span>														
                                                                 </a>
+                                                                </li>
                                                                 <li class="menu-item menu-item-submenu" data-menu-toggle="hover" aria-haspopup="true">
                                                                 <a href="<?php echo site_url('registrasi/undangan_surat')?>" class="menu-link">
                                                                     <span class="menu-text">Surat Undangan</span>
                                                                 </a>
+                                                                </li>
                                                                 <li class="menu-item menu-item-submenu" data-menu-toggle="hover" aria-haspopup="true">
                                                                 <a href="<?php echo site_url('registrasi/tembusan_sekda')?>" class="menu-link">
                                                                     <span class="menu-text">Tembusan Sekda</span>
                                                             
-    </a>
-    </li>
-    </li>
-    </li>
-    </ul>
+                                                                </a>
+                                                                </li>
+                                                        </ul>
+                                                    </div>
+                    </li>
+            </ul>
+        </div>
     </div>
-    </li>
-    </ul>
-    </div>
-    </div>
-    </div>
-    </li>
-    </ul>
-    </div>
-    </li>
-    </ul>
-    </div>
-    </li>
-    </ul>
-    </div>
-    </div>
+    
+

@@ -1,3 +1,10 @@
+<title>Register Surat</title>
+<style>
+.wizard.wizard-2 .wizard-nav .wizard-steps .wizard-step[data-wizard-state="current"] .wizard-icon i {
+    color: #ffa800 !important;
+}
+</style>
+
 <div class="card card-custom">
 									<!--begin::Header-->
 									<div class="card-header flex-wrap border-0 pt-6 pb-0">
@@ -55,7 +62,7 @@
 											</div>
 											<!--end::Dropdown-->
 											<!--begin::Button-->
-											<a href="#" class="btn btn-primary font-weight-bolder">
+											<a href="<?php echo site_url('Registrasi/add_register_surat')?>" class="btn btn-primary font-weight-bolder">
 											<span class="svg-icon svg-icon-md">
 												<!--begin::Svg Icon | path:/metronic/theme/html/demo2/dist/assets/media/svg/icons/Design/Flatten.svg-->
 												<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -94,7 +101,6 @@
                                         
 									</tr>
                                         </thead>
-                                       
                                         </table>
                                         </div>
                                     </div>

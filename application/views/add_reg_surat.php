@@ -4,36 +4,18 @@
     color: #ffa800 !important;
 }
 </style>
-<!--begin::Subheader-->
-<div class="subheader min-h-lg-175px pt-5 pb-7 subheader-transparent" id="kt_subheader">
-    <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
-        <!--begin::Details-->
-        <div class="d-flex align-items-center flex-wrap mr-2">
-            <!--begin::Heading-->
-            <div class="d-flex flex-column">
-                <!--begin::Title-->
-                <h2 class="text-white font-weight-bold my-2 mr-5" style="z-index:9;">Register Surat</h2>
-                <!--end::Title-->
-                <!--begin::Breadcrumb-->
-                <!--end::Breadcrumb-->
-            </div>
-            <!--end::Heading-->
-        </div>
-        <!--end::Details-->
-    </div>
-</div>
+
 <!--end::Subheader-->
 <!--begin::Entry-->
 <div class="card card-custom gutter-b example example-compact">
 											<div class="card-header">
 												<h3 class="card-title">Register Surat</h3>
-												<div class="card-toolbar">
-													
+												<div class="card-toolbar">	
 												</div>
 											</div>
 											<!--begin::Form-->
-											<form class="form">
-												<div class="card-body .col-lg-8">
+											<form class="form"> 
+												<div class="card-body"> 
 													<div class="form-group">
 														<label>Tanggal Masuk</label>
 														<input type="date" class="form-control form-control-lg" placeholder="">

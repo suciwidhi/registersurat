@@ -33,7 +33,7 @@ class Registrasi extends CI_Controller{
 
     public function add_tembusan_sekda()
     {
-        $data['content'] = 'add_tem_surat';
+        $data['content'] = 'add_tem_sekda';
         $data['active'] = 'add_tembusan';
         $this->load->view('layouts/master', $data);
     }
