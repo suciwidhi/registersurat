@@ -63,7 +63,7 @@
 													</div>
 													
 													<div class="card-footer">
-													<button type="reset" class="btn btn-success mr-2">Submit</button>
+													<button type="submit" class="btn btn-success mr-2">Submit</button>
 													<button type="reset" class="btn btn-secondary">Cancel</button>
 												</div>
 												
