@@ -9,9 +9,13 @@
                         <i class="menu-arrow"></i>
                     </a>
                     </li>
-                    <li class="menu-item menu-item-submenu menu-item-rel  menu-item-open-dropdown menu-item-hover" data-menu-toggle="click" aria-haspopup="true"><a href="<?php echo site_url('/')?>" class="menu-link">
-                                                    <span class="menu-text">Menu</span>
-                                                    </a>
+                    <li class="menu-item menu-item-submenu menu-item-rel" data-menu-toggle="click" aria-haspopup="true">
+												<a href="javascript:;" class="menu-link menu-toggle">
+													<span class="menu-text">Menu</span>
+													<span class="menu-desc"></span>
+													<i class="menu-arrow"></i>
+												</a>
+                                               
                                                     <div class="menu-submenu menu-submenu-classic menu-submenu-left" data-hor-direction="menu-submenu-left">
                                                         <ul class="menu-subnav">
                                                                 <li class="menu-item menu-item-submenu <?php if ($active == 'surat'): ?> menu-item-here <?php endif; ?>" data-menu-toggle="hover" aria-haspopup="true">
@@ -36,5 +40,7 @@
             </ul>
         </div>
     </div>
+    
+   
     
 
