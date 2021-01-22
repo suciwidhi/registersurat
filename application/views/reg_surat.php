@@ -80,34 +80,224 @@
 									<!--end::Header-->
 									<!--begin::Body-->
 									<div class="card-body">
-										<!--begin: Datatable-->
-                                        <div class="datatable datatable-bordered datatable-head-custom datatable-default datatable-primary datatable-loaded" id="kt_datatable" style=""><table class="datatable-table" style="display: block;">
-                                        <table class="table table-head-custom table-vertical-center" id="kt_advance_table_widget_1">
-                                        <thead class="datatable-head">
-                                        <tr class="datatable-row" style="left: 0px;">
-                                        <th class="datatable-cell datatable-toggle-detail">
-                                        <span></span>
-										<th class="pr-0">No Urut</th>
-										<th>Tgl Masuk Surat</th>
-                                        <th>Asal Surat</th>
-                                        <th>No Surat</th>
-                                        <th>Tgl Surat</th>
-                                        <th>Jenis Surat</th>
-                                        <th>Perihal</th>
-                                        <th>Kode</th>
-                                        <th>Keterangan</th>
-										<th>Upload Dokumen</th>
-										<th class="pr-0 text-center">action</th>
-                                        
-									</tr>
-                                        </thead>
-                                        </table>
-                                        </div>
-                                    </div>
-                                    </div>
-									</div>
-									</div>
-									<!--end::Body-->
+										<div class="datatable datatable-bordered datatable-head-custom" id="kt_datatable"></div>
+								
 								</div>
 
-                            
+<script type="text/javascript">
+
+
+	var KTDatatableRemoteAjaxDemo = function() {
+        // Private functions
+
+        // basic demo
+        var demo = function() {
+
+            var datatable = $('#kt_datatable').KTDatatable({
+                // datasource definition
+                data: {
+                    type: 'remote',
+                    source: {
+                        read: {
+                            url: '<?php echo base_url()."/registrasi/ambildata" ?>',
+                            // sample custom headers
+                            // headers: {'x-my-custom-header': 'some value', 'x-test-header': 'the value'},
+                            map: function(raw) {
+                                // sample data mapping
+                                var dataSet = raw;
+                                if (typeof raw.data !== 'undefined') {
+                                    dataSet = raw.data;
+                                }
+                                return dataSet;
+                            },
+                        },
+                    },
+                    pageSize: 10,
+                    serverPaging: true,
+                    // serverFiltering: true,
+                    serverSorting: true,
+                },
+
+                // layout definition
+                layout: {
+                    scroll: false,
+                    footer: false,
+                },
+
+                // column sorting
+                sortable: true,
+
+                pagination: true,
+
+                search: {
+                    input: $('#kt_datatable_search_query'),
+                    key: 'generalSearch'
+                },
+
+                // columns definition
+                columns: [{
+                    field: 'register_no_urut',
+                    title: 'No'
+                },{
+                    field: 'register_tanggal_masuk',
+                    title: 'Tgl Masuk',
+                },{
+                    field: 'register_asal_surat',
+                    title: 'Asal Surat',
+				},{
+                    field: 'register_tanggal_surat',
+                    title: 'Tgl Surat',
+				}, {
+                    field: 'register_jenis_surat',
+                    title: 'Jenis Surat',
+				},{
+                    field: 'register_perihal',
+                    title: 'Perihal',
+				},{
+                    field: 'register_kode',
+                    title: 'Kode',
+                },{
+                    field: 'register_keterangan',
+                    title: 'Keterangan',
+                },{
+                    field: 'register_upload_dokumen',
+                    title: 'Dokumen',
+				},
+				// {
+                //     field: 'jaspel_total',
+                //     title: 'Total',
+                //     template: function(row) {
+                //         if (row.jaspel_total == null) {
+                //             return 'Rp. 0';
+                //         } else {
+                //             var reverse = row.jaspel_total.toString().split('').reverse().join(''),
+                //                 ribuan = reverse.match(/\d{1,3}/g);
+                //             ribuan = ribuan.join('.').split('').reverse().join('');
+                //             return 'Rp. ' + ribuan;
+                //         }
+                //     }
+                // },{
+                //     field: 'jaspel_bulan',
+                //     title: 'Bulan',
+                //     template: function(row) {
+                //         if (row.jaspel_bulan == 1) {
+                //             return '<span class="label label-primary label-pill label-inline">Januari</span>';
+                //         } else if (row.jaspel_bulan == 2) {
+                //             return '<span class="label label-primary label-pill label-inline">Februari</span>';
+                //         } else if (row.jaspel_bulan == 3) {
+                //             return '<span class="label label-primary label-pill label-inline">Maret</span>';
+                //         } else if (row.jaspel_bulan == 4) {
+                //             return '<span class="label label-primary label-pill label-inline">April</span>';
+                //         } else if (row.jaspel_bulan == 5) {
+                //             return '<span class="label label-primary label-pill label-inline">Mei</span>';
+                //         } else if (row.jaspel_bulan == 6) {
+                //             return '<span class="label label-primary label-pill label-inline">Juni</span>';
+                //         } else if (row.jaspel_bulan == 7) {
+                //             return '<span class="label label-primary label-pill label-inline">Juli</span>';
+                //         } else if (row.jaspel_bulan == 8) {
+                //             return '<span class="label label-primary label-pill label-inline">Agustus</span>';
+                //         } else if (row.jaspel_bulan == 9) {
+                //             return '<span class="label label-primary label-pill label-inline">September</span>';
+                //         } else if (row.jaspel_bulan == 10) {
+                //             return '<span class="label label-primary label-pill label-inline">Oktober</span>';
+                //         } else if (row.jaspel_bulan == 11) {
+                //             return '<span class="label label-primary label-pill label-inline">November</span>';
+                //         } else if (row.jaspel_bulan == 12) {
+                //             return '<span class="label label-primary label-pill label-inline">Desember</span>';
+                //         }
+
+
+                //     }
+                // }, {
+                //     field: 'jaspel_tahun',
+                //     title: 'Tahun',
+                //     template: function(row) {
+                //         return '<span class="label label-success label-pill label-inline">' + row.jaspel_tahun + '</span>';
+                //     }
+				// }, 
+				{
+                    field: 'Actions',
+                    title: 'Actions',
+                    sortable: false,
+                    width: 125,
+                    overflow: 'visible',
+                    autoHide: false,
+                    template: function(row) {
+                        return '\
+							<a href="javascript:;" data-id="' + row.register_tanggal_masuk + '" data-bulan="' + row.jaspel_bulan + '" data-tahun="' + row.jaspel_tahun + '" data-dokter="' + row.nakes_kode + '" data-pajak="' + row.jaspel_pajak + '" data-ket="' + row.jaspel_ket + '" class="btn btn-sm btn-clean btn-icon btnEdit" title="Edit details">\
+								<i class="la la-edit"></i>\
+							</a>\
+							<a href="javascript:;" data-id="' + row.register_no_urut + '" class="btn btn-sm btn-clean btn-icon btnDelete" title="Delete">\
+								<i class="la la-trash"></i>\
+							</a>\
+						';
+                    },
+                }],
+
+			});
+			
+			$(document).on("click", ".btnEdit", function(){
+				let a = $(this).data('id');
+				alert(a)
+			});
+
+			$(document).on("click", ".btnDelete", function(){
+				let id = $(this).data('id');
+				bootbox.confirm({
+                    title: "Hapus Data?",
+                    message: "Data yang dihapus tidak bisa dikembalikan",
+                    buttons: {
+                        cancel: {
+                            label: 'Batal'
+                        },
+                        confirm: {
+                            label: 'OK',
+                            className: 'btn btn-primary'
+                        }
+                    },
+                    callback: function(result) {
+                        if (result) {
+                            $.ajax({
+                                type: 'POST',
+                                url: '<?php echo base_url('/registrasi/hapusdata') ?>',
+                                data: {
+                                    register_no_urut : id,
+                                },
+                                dataType: 'json',
+                                success: function(data) {
+                                    if (data) {
+                                        location.reload();
+                                    } else {
+                                        bootbox.alert({
+                                            message: "Oops! Something wrong",
+                                            backdrop: true,
+                                            size: 'small'
+                                        });
+                                    }
+                                },
+                                error: function(xhr, desc, err) {
+                                    console.log(xhr.responseText);
+                                }
+                            });
+                        }
+                    }
+                });
+			});
+
+
+
+        };
+
+        return {
+            // public functions
+            init: function() {
+                demo();
+            },
+        };
+    }();
+
+    jQuery(document).ready(function() {
+        KTDatatableRemoteAjaxDemo.init();
+    });
+
+</script>

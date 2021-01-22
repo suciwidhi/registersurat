@@ -53,9 +53,7 @@ class Authentication
 
 	public function logout()
 	{
-		$this->ci->session->unset_userdata('user_id');
-		$this->ci->session->unset_userdata('user_username');
-		$this->ci->session->unset_userdata('user_prev');
+		session_destroy();
 		return TRUE;
 	}
 }
