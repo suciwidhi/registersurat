@@ -33,13 +33,13 @@
 														<input type="date" class="form-control" placeholder="Tanggal Surat" name="tambah_register_tanggal_surat" required>
 													</div>
 													<div class="form-group">
-														<label for="exampleSelectd">Jenis Surat</label>
-														<select class="form-control" id="exampleSelectd" name="tambah_register_jenis_surat" required>
-															<option>Surat Masuk</option>
-															<option>Surat Bupati</option>
-															<option>Surat Wakil</option>
-															<option>Surat Sekda</option>
-														</select>
+													<label>Jenis Surat</label>
+													<select class="form-control" name="tambah_register_jenis_surat" required>
+														<option value="" selected>select..</option>
+   														<?php foreach($cats as $cat) : ?>
+    													<option value="<?php echo $cat->jenisreg_jenis_surat;?>"> <?php echo $cat->jenisreg_jenis_surat; ?></option>
+   														<?php endforeach; ?>
+ 														</select>
 													</div>
 													<div class="form-group">
 														<label>Perihal</label>

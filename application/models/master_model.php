@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Master_model extends CI_Model {
+class master_model extends CI_Model {
 
     function __construct(){
         parent::__construct();
@@ -10,12 +10,16 @@ class Master_model extends CI_Model {
 
     function ambildata($table){
         return $this->db->get($table);
-
     }
 
     function hapusdata($where,$table){
         $this->db->where($where);
         $this->db->delete($table);
+    }
+
+    function editdata($data, $where){
+        return $this->db->where('register_no_urut', $where)
+            ->update('ref_register_surat', $data);
     }
 
         // public function get_desa(){
@@ -50,7 +54,7 @@ class Master_model extends CI_Model {
     // public function get_undangan(){
     //     return $this->db->get('ref_undangan')->result();
     // }
-    function list_register_surat($id)
+    public function list_register_surat($id)
     {
         $this->db->select('*');
         // $this->db->where('pasien_lokasi_id', $id);
@@ -68,6 +72,18 @@ class Master_model extends CI_Model {
     {
         $this->db->where('register_no_urut', $register_no_urut)
             ->update('ref_register_surat', $data_dokumen_upload);
+    }
+
+    public function get_jenisreg()
+    {
+        $query = $this->db->get('ref_jenisreg')->result();
+        return $query;
+    }
+    // public function get_jenisreg()
+    // {
+    //     $query = $this->db->get('ref_jenisreg')->result();
+    //     return $query;
+    // }
 
 //     public function get_jenis_lantai(){
 //         return $this->db->get('ref_jenis_lantai')->result();
@@ -217,5 +233,4 @@ class Master_model extends CI_Model {
 //         return $this->db->get('ref_alasan_tidak_kb')->result();
 //     }
 // 
-}
 }

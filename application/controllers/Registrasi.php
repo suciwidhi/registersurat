@@ -20,6 +20,24 @@ class Registrasi extends CI_Controller{
         $this->model->hapusdata($where,'ref_register_surat');
     }
 
+    function editdata(){
+        $id=$this->input->post('register_no_urut');
+        $data=array(
+            'register_tanggal_masuk' => $this->input->post('register_tanggal_masuk'),
+            'register_asal_surat' => $this->input->post('register_asal_surat'),
+            'register_no_surat' => $this->input->post('register_no_surat'),
+            'register_tanggal_surat' => $this->input->post('register_tanggal_surat'),
+            'register_jenis_surat' => $this->input->post('register_jenis_surat'),
+            'register_perihal' => $this->input->post('register_perihal'),
+            'register_kode' => $this->input->post('register_kode'),
+            'register_keterangan' => $this->input->post('register_keterangan'),
+            'register_upload_dokumen' => $this->input->post('register_upload_dokumen'),
+        );
+        $dataregis = $this->model->editdata($data, $id);
+
+        echo json_encode($dataregis);
+    }
+
     public function register_surat()
     {
         $data['content'] = 'reg_surat';
@@ -45,6 +63,7 @@ class Registrasi extends CI_Controller{
     {
         $data['content'] = 'add_reg_surat';
         $data['active'] = 'add_register';
+        $data['cats'] = $this->model->get_jenisreg();
         $this->load->view('layouts/master', $data);
     }
 
@@ -149,4 +168,5 @@ class Registrasi extends CI_Controller{
         $this->model->editRegister($deleted, $register_no_urut);
         echo json_encode('1');
     }
+
 }
