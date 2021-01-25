@@ -70,9 +70,31 @@ class master_model extends CI_Model {
             ->update('ref_register_surat', $data_dokumen_upload);
     }
 
+    public function tambahTembusan($data_tembusan)
+    {
+        $this->db->insert('ref_tembusan', $data_tembusan);
+        return $this->db->insert_id();
+    }
+    
+    public function tambahUndangan($data_undangan)
+    {
+        $this->db->insert('ref_undangan', $data_undangan);
+        return $this->db->insert_id();
+    }
+    function editUndangan($data_dokumen_upload, $register_no_urut)
+    {
+        $this->db->where('undangan_no_urut', $register_no_urut)
+            ->update('ref_undangan', $data_dokumen_upload);
+    }
+
     public function get_jenisreg()
     {
         $query = $this->db->get('ref_jenisreg')->result();
+        return $query;
+    }
+    public function get_jenisundangan()
+    {
+        $query = $this->db->get('ref_jenisundangan')->result();
         return $query;
     }
     // public function get_jenisreg()

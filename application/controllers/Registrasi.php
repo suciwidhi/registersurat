@@ -60,6 +60,7 @@ class Registrasi extends CI_Controller{
     {
         $data['content'] = 'add_und_surat';
         $data['active'] = 'add_undangan';
+        $data['cats'] = $this->model->get_jenisundangan();
         $this->load->view('layouts/master', $data);
     }
     function tambahRegister()
@@ -149,6 +150,60 @@ class Registrasi extends CI_Controller{
         );
         $this->model->editRegister($deleted, $register_no_urut);
         echo json_encode('1');
+    }
+    function tambahUndangan()
+    {
+        $data_undangan=array(
+            'undangan_dari' => $this->input->post('tambah_undangan_dari'),
+            'undangan_no_surat' => $this->input->post('tambah_undangan_no_surat'),
+            'undangan_tanggal' => $this->input->post('tambah_undangan_tanggal'),
+            'undangan_jenis_undangan' => $this->input->post('tambah_undangan_jenis_undangan'),
+            'undangan_uraian' => $this->input->post('tambah_undangan_uraian'),
+            'undangan_keterangan' => $this->input->post('tambah_undangan_keterangan'),
+            // 'undangan_upload_dokumen' => $this->input->post('tambah_undangan_upload_dokumen'),
+        );
+        $undangan_no_urut = $this->model->tambahUndangan($data_undangan);
+        $upload_path = "./assets/uploads/konten/undangan";
+        if (is_dir($upload_path) == false) {
+            $oldmask = umask(0);
+            mkdir($upload_path, 0775);
+            umask($oldmask);
+        }
+        if (!empty($_FILES['tambah_undangan_upload_dokumen']['name'])) {
+            $date = new DateTime();
+            $timestamp =  $date->getTimestamp();
+            $filename = $undangan_no_urut . '_' . $timestamp;
+            $uploaded_filename = $this->doUpload($upload_path, 'tambah_undangan_upload_dokumen', $filename);
+            $data_dokumen_upload = array(
+                'undangan_upload_dokumen' => $uploaded_filename,
+            );        
+            $this->model->editUndangan($data_dokumen_upload, $undangan_no_urut);
+
+        }
+        // redirect('/registrasi/register_surat');
+    }
+    private function doUpload1($upload_path, $key, $file_name)
+    {
+        $config['upload_path']   = $upload_path;
+        $config['allowed_types'] = '*';
+        $config['max_size']      = '0';
+        $config['file_name']     = $file_name;
+        $config['overwrite']     = 'TRUE';
+        $this->load->library('upload', $config);
+        $this->upload->do_upload1($key);
+        $upload_data = $this->upload->data();
+        return $upload_data['file_name'];
+    }
+    function tambahTembusan()
+    {
+        $data_tembusan=array(
+            'tembusan_no_urut' => $this->input->post('tambah_tembusan_no_urut'),
+            'tembusan_asal_surat' => $this->input->post('tambah_tembusan_asal_surat'),
+            'tembusan_tanggal_surat' => $this->input->post('tambah_tembusan_tanggal_surat'),
+            'tembusan_no_surat' => $this->input->post('tambah_tembusan_no_surat'),
+            'tembusan_keterangan' => $this->input->post('tambah_tembusan_keterangan'),
+        );
+        $tembusan_no_urut = $this->model->tambahTembusan($data_tembusan);
     }
 
 }
