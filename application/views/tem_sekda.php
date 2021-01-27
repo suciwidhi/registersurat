@@ -102,7 +102,7 @@
                 </div>
                 <div class="form-group">
                     <label for="tembusan_asal_surat">Asal Surat</label>
-                    <input type="date" name="asalSurat" class="form-control asalSurat"></input>
+                    <input type="text" name="asalSurat" class="form-control asalSurat"></input>
                 </div>
                 <div class="form-group">
                     <label for="tembusan_tanggal_surat">Tanggal Surat</label>
@@ -110,7 +110,7 @@
                 </div>
                 <div class="form-group">
                     <label for="tembusan_no_surat">No Surat</label>
-                    <input type="date" name="noSurat" class="form-control noSurat"></input>
+                    <input type="text" name="noSurat" class="form-control noSurat"></input>
                 </div>
                 <div class="form-group">
                     <label for="tembusan_keterangan">Perihal</label>

@@ -101,7 +101,6 @@
                                         
 									</tr>
                                         </thead>
-                                       
                                         </table>
                                         </div>
                                     </div>
@@ -319,8 +318,6 @@ var KTDatatableRemoteAjaxDemo = function() {
 		});
 
 
-		
-
 		$(document).on('click','.btnEdit',function(){
 			let id = $(this).data('id');
 			let dari = $(this).data("dari");
@@ -387,7 +384,6 @@ var KTDatatableRemoteAjaxDemo = function() {
 
 	});
 
-			  
 
 		$(document).on("click", ".btnDelete", function(){
 			let id = $(this).data('id');

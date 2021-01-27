@@ -50,7 +50,6 @@ class master_model extends CI_Model {
             ->update('ref_undangan', $data);
     }
 
-    
 
         // public function get_desa(){
     //     $q1 = $this->db->select('nama_kec, id_kec')->from('ref_kec')->get()->result();

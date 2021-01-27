@@ -89,9 +89,9 @@ class Registrasi extends CI_Controller{
             'undangan_upload_dokumen' => $this->input->post('undangan_upload_dokumen'),
            
         );
-        $dataregis = $this->model->editdata3($data, $id);
+        $dataundangan = $this->model->editdata3($data, $id);
 
-        echo json_encode($dataregis);
+        echo json_encode($dataundangan);
     }
 
     public function register_surat()
