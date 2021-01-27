@@ -7,10 +7,15 @@ public function __construct()
     {
         parent::__construct();
         if($this->session->userdata('user_loggedin')!= TRUE) redirect('login');
+        $this->load->model('dashboard_model', 'm');
     }
 
     public function index()
     {
+        $data['tot_surat'] = $this->m->tot_surat();
+        $data['tot_undangan'] = $this->m->tot_undangan();
+        $data['tot_tembusan'] = $this->m->tot_tembusan();
+        $data['tot_user'] = $this->m->tot_user();
         $data['content'] = 'dashboard';
         $data['active'] = 'dashboard';
         $this->load->view('layouts/master', $data);

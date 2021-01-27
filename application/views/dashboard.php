@@ -1,4 +1,5 @@
 <title>Dashboard | Register Surat</title>
+
 <!--begin::Subheader-->
 <div class="subheader min-h-lg-175px pt-5 pb-3 subheader-transparent" id="kt_subheader">
     <div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
@@ -36,7 +37,7 @@
                         <div class="index8">
                             <img width="40" src="<?php echo base_url('assets/img/spdp_register.png')?>">
                         </div>
-                        <div class="text-dark font-weight-bolder font-size-h2 mt-3" id="total_bobot">0</div>
+                        <div class="text-dark font-weight-bolder font-size-h2 mt-3"><?= $tot_surat?></div>
                         <a href="#" class="text-muted text-hover-primary font-weight-bold font-size-lg mt-1">Total Surat Masuk</a>
                     </div>
                 </div>
@@ -49,7 +50,7 @@
                         <div class="index7">
                             <img width="40" src="<?php echo base_url('assets/img/spdp_proses.png')?>">
                         </div>
-                        <div class="text-dark font-weight-bolder font-size-h2 mt-3" id="total_skor_rata_rata">0</div>
+                        <div class="text-dark font-weight-bolder font-size-h2 mt-3" ><?= $tot_undangan?></div>
                         <a href="#" class="text-muted font-weight-bold font-size-lg mt-1">Total Undangan</a>
                     </div>
                 </div>
@@ -62,7 +63,7 @@
                         <div class="index6">
                             <img width="40" src="<?php echo base_url('assets/img/skor.png')?>">
                         </div>
-                        <div class="text-dark font-weight-bolder font-size-h2 mt-3" id="total_index_kepuasan">0</div>
+                        <div class="text-dark font-weight-bolder font-size-h2 mt-3"><?= $tot_tembusan?></div>
                         <a href="#" class="text-muted text-hover-success font-weight-bold font-size-lg mt-1">Tembusan Sekda</a>
                     </div>
                 </div>
@@ -79,7 +80,7 @@
                         <div class="index8">
                             <img width="40" src="<?php echo base_url('assets/img/responden.png')?>">
                         </div>
-                        <div class="text-dark font-weight-bolder font-size-h2 mt-3" id="total_bobot">0</div>
+                        <div class="text-dark font-weight-bolder font-size-h2 mt-3" ><?= $tot_user?></div>
                         <a href="#" class="text-muted text-hover-primary font-weight-bold font-size-lg mt-1">User</a>
                     </div>
                 </div>

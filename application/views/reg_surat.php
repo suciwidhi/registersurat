@@ -110,6 +110,15 @@
                 <div class="form-group">
                     <label for="register_tanggal_surat">Tanggal Surat</label>
                     <input type="date" name="tanggalsurat" class="form-control tanggalsurat"></input>
+                <div class="form-group">
+                    <label for="register_jenis_surat">Jenis Surat</label>
+                    <select class="form-control jenis" name="jenis">
+                        <?php foreach ($register_surat as $val) { ?>
+                        <option value="<?php echo $val->jenisreg_jenis_surat ?>"><?php echo $val->jenisreg_jenis_surat ?></option>
+                        <?php } ?>
+                    </select>
+                    
+                </div>
                 </div>
                 <div class="form-group">
                     <label for="register_perihal">Perihal</label>
@@ -214,8 +223,13 @@
                 },{
                     field: 'register_upload_dokumen',
                     title: 'Dokumen',
+                    template: function(row) {
+                        return '<a href="<?php echo base_url()?>/assets/uploads/konten/register/'+row.register_upload_dokumen+'" " class="btn btn-sm btn-clean btn-icon" title="Download"><i class="fa fa-download"></i></a>'
+                            // return row.register_upload_dokumen + 'test';
+                    }
 				},
-				// {
+        
+				// { 
                 //     field: 'jaspel_total',
                 //     title: 'Total',
                 //     template: function(row) {

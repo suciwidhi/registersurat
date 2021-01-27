@@ -21,6 +21,19 @@ class master_model extends CI_Model {
         return $this->db->where('register_no_urut', $where)
             ->update('ref_register_surat', $data);
     }
+    function ambildata1($table){
+        return $this->db->get($table);
+    }
+
+    function hapusdata1($where,$table){
+        $this->db->where($where);
+        $this->db->delete($table);
+    }
+
+    function editdata1($data, $where){
+        return $this->db->where('tembusan_no_urut', $where)
+            ->update('ref_tembusan', $data);
+    }
 
         // public function get_desa(){
     //     $q1 = $this->db->select('nama_kec, id_kec')->from('ref_kec')->get()->result();
@@ -62,9 +75,21 @@ class master_model extends CI_Model {
         return $this->db->get('ref_pasien')->result();
     }
 
+    public function tambahUndangan($data_undangan)
+    {
+        $this->db->insert('ref_undangan', $data_undangan);
+        return $this->db->insert_id();
+    }
+
     public function tambahRegister($data_register)
     {
         $this->db->insert('ref_register_surat', $data_register);
+        return $this->db->insert_id();
+    }
+    
+    public function tambahTembusan($data_tembusan)
+    {
+        $this->db->insert('ref_tembusan', $data_tembusan);
         return $this->db->insert_id();
     }
 
@@ -73,10 +98,20 @@ class master_model extends CI_Model {
         $this->db->where('register_no_urut', $register_no_urut)
             ->update('ref_register_surat', $data_dokumen_upload);
     }
-
+    public function editUndangan($data_dokumen_upload, $undangan_no_urut)
+    {
+        $this->db->where('undangan_no_urut', $undangan_no_urut)
+            ->update('ref_undangan', $data_dokumen_upload);
+    }
     public function get_jenisreg()
     {
         $query = $this->db->get('ref_jenisreg')->result();
+        return $query;
+    }
+    
+    public function get_jenisundangan()
+    {
+        $query=$this->db->get('ref_jenisundangan')->result();
         return $query;
     }
     // public function get_jenisreg()
