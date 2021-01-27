@@ -102,15 +102,15 @@
                 </div>
                 <div class="form-group">
                     <label for="tembusan_asal_surat">Asal Surat</label>
-                    <input type="text" name="asalSurat" class="form-control asalSurat"></input>
+                    <input type="text" name="asalsurat" class="form-control asalsurat"></input>
                 </div>
                 <div class="form-group">
                     <label for="tembusan_tanggal_surat">Tanggal Surat</label>
-                    <input type="date" name="tanggalSurat" class="form-control tanggalSurat"></input>
+                    <input type="date" name="tanggalsurat" class="form-control tanggalsurat"></input>
                 </div>
                 <div class="form-group">
                     <label for="tembusan_no_surat">No Surat</label>
-                    <input type="text" name="noSurat" class="form-control noSurat"></input>
+                    <input type="text" name="nosurat" class="form-control nosurat"></input>
                 </div>
                 <div class="form-group">
                     <label for="tembusan_keterangan">Perihal</label>
@@ -253,7 +253,7 @@
                     autoHide: false,
                     template: function(row) {
                         return '\
-							<a href="javascript:;"  data-id="' + row.tembusan_no_urut + '" data-asalSurat="' + row.tembusan_asal_surat + '" data-tanggalSurat="' + row.tembusan_tanggal_surat + '" data-noSurat="' + row.tembusan_no_surat + '" data-keterangan="' + row.tembusan_keterangan + '" class="btn btn-sm btn-clean btn-icon btnEdit" title="Edit details">\
+							<a href="javascript:;"  data-id="' + row.tembusan_no_urut + '" data-asalsurat="' + row.tembusan_asal_surat + '" data-tanggalsurat="' + row.tembusan_tanggal_surat + '" data-nosurat="' + row.tembusan_no_surat + '" data-keterangan="' + row.tembusan_keterangan + '" class="btn btn-sm btn-clean btn-icon btnEdit" title="Edit details">\
 								<i class="la la-edit" ></i>\
 							</a>\
 							<a href="javascript:;" data-id="' + row.tembusan_no_urut + '" class="btn btn-sm btn-clean btn-icon btnDelete" title="Delete">\
@@ -266,56 +266,54 @@
 
             $(document).on('click','.btnEdit',function(){
                 let id = $(this).data('id');
-                let asalSurat = $(this).data("asalSurat");
-                let tanggalSurat = $(this).data("tanggalSurat");
-                let noSurat = $(this).data("noSurat");
+                let asalsurat = $(this).data("asalsurat");
+                let tanggalsurat = $(this).data("tanggalsurat");
+                let nosurat = $(this).data("nosurat");
                 let keterangan = $(this).data("keterangan");
             $.ajax({
                 url: '<?php echo base_url()."/registrasi/editdata2" ?>',
                 type: 'POST',
                 data: {
-						tembusan_no_urut : id,
-						tembusan_asal_surat : asalSurat,
-						tembusan_tanggal_surat : tanggalSurat,
-						tembusan_no_surat : noSurat,
+                        tembusan_no_urut : id,
+						tembusan_asal_surat : asalsurat,
+						tembusan_tanggal_surat : tanggalsurat,
+						tembusan_no_surat : nosurat,
 						tembusan_keterangan : keterangan,
                 },
                 dataType: 'json',
                 success: function(response){
                         $("#editModal").modal('show');
                         $('.id').val(id);
-                        $('.asalSurat').val(asalSurat);
-                        $('.tanggalSurat').val(tanggalSurat);
-                        $('.noSurat').val(noSurat);
+                        $('.asalsurat').val(asalsurat);
+                        $('.tanggalsurat').val(tanggalsurat);
+                        $('.nosurat').val(nosurat);
                         $('.keterangan').val(keterangan);
                 }
             })
         });
- 
+
         //Meng-Update Data
         $("#btnEdit").on('click',function(){
             let id = $('.id').val();
-            let asalSurat = $('.asalSurat').val();
-            let tanggalSurat = $('.tanggalSurat').val();
-            let noSurat = $('.noSurat').val();
+            let asalsurat = $('.asalsurat').val();
+            let tanggalsurat = $('.tanggalsurat').val();
+            let nosurat = $('.nosurat').val();
             let keterangan = $('.keterangan').val();
             $.ajax({
                 url: '<?php echo base_url(). "/registrasi/editdata2" ?>',
                 type: 'POST',
                 data: {tembusan_no_urut : id,
-						tembusan_asal_surat : asalSurat,
-						tembusan_tanggal_surat : tanggalSurat,
-						tembusan_no_surat : noSurat,
+						tembusan_asal_surat : asalsurat,
+						tembusan_tanggal_surat : tanggalsurat,
+						tembusan_no_surat : nosurat,
 						tembusan_keterangan : keterangan,
                         },
                 success: function(response){
                         location.reload();
                 }
             })
- 
+
         });
-   
-                  
 
 			$(document).on("click", ".btnDelete", function(){
 				let id = $(this).data('id');
@@ -337,20 +335,13 @@
                                 type: 'POST',
                                 url: '<?php echo base_url('/registrasi/hapusdata2') ?>',
                                 data: {
-                                    register_no_urut : id,
+                                    tembusan_no_urut : id,
                                 },
                                 dataType: 'json',
                                 success: function(data) {
-                                    if (data) {
-                                        location.reload();
-                                    } else {
-                                        bootbox.alert({
-                                            message: "Oops! Something wrong",
-                                            backdrop: true,
-                                            size: 'small'
-                                        });
-                                    }
-                                },
+								console.log(data);
+								location.reload();
+							},
                                 error: function(xhr, desc, err) {
                                     console.log(xhr.responseText);
                                 }

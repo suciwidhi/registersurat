@@ -28,19 +28,19 @@ class Registrasi extends CI_Controller{
     function hapusdata(){
         $id=$this->input->post('register_no_urut');
         $where=array('register_no_urut' => $id);
-        $this->model->hapusdata($where,'ref_register_surat');
+        echo json_encode($this->model->hapusdata($where,'ref_register_surat'));
     }
 
     function hapusdata2(){
         $id=$this->input->post('tembusan_no_urut');
         $where=array('tembusan_no_urut' => $id);
-        $this->model->hapusdata2($where,'ref_tembusan');
+        echo json_encode($this->model->hapusdata2($where,'ref_tembusan'));
     }
 
     function hapusdata3(){
         $id=$this->input->post('undangan_no_urut');
         $where=array('undangan_no_urut' => $id);
-        $this->model->hapusdata3($where,'ref_undangan');
+        echo json_encode($this->model->hapusdata3($where,'ref_undangan'));
     }
 
     function editdata(){
@@ -205,17 +205,17 @@ class Registrasi extends CI_Controller{
             mkdir($upload_path, 0775);
             umask($oldmask);
         }
-        if (!empty($_FILES['edit_register_upload']['name'])) {
-            $date = new DateTime();
-            $timestamp =  $date->getTimestamp();
-            $filename = $berita_id . '_' . $timestamp;
-            $uploaded_filename = $this->doUpload($upload_path, 'edit_register_upload', $filename);
-            $data_dokumen_upload = array(
-                'register_upload' => $uploaded_filename,
-            );
-            $this->model->editRegister($data_register, $register_no_urut);
-        }
-        redirect('/registrasi/register_surat');
+        // if (!empty($_FILES['edit_register_upload']['name'])) {
+        //     $date = new DateTime();
+        //     $timestamp =  $date->getTimestamp();
+        //     $filename = $berita_id . '_' . $timestamp;
+        //     $uploaded_filename = $this->doUpload($upload_path, 'edit_register_upload', $filename);
+        //     $data_dokumen_upload = array(
+        //         'register_upload' => $uploaded_filename,
+        //     );
+        //     $this->model->editRegister($data_register, $register_no_urut);
+        // }
+        // redirect('/registrasi/register_surat');
     }
     function delRegistrasi($register_no_urut)
     {

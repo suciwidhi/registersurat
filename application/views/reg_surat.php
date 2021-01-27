@@ -445,16 +445,9 @@
                                 },
                                 dataType: 'json',
                                 success: function(data) {
-                                    if (data) {
-                                        location.reload();
-                                    } else {
-                                        bootbox.alert({
-                                            message: "Oops! Something wrong",
-                                            backdrop: true,
-                                            size: 'small'
-                                        });
-                                    }
-                                },
+								console.log(data);
+								location.reload();
+							},
                                 error: function(xhr, desc, err) {
                                     console.log(xhr.responseText);
                                 }

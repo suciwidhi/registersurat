@@ -77,37 +77,13 @@
 												<!--end::Svg Icon-->
 											</span>Add Data</a>
 											<!--end::Button-->
-										</div>
+											</div>
 									</div>
 									<!--end::Header-->
 									<!--begin::Body-->
 									<div class="card-body">
-										<!--begin: Datatable-->
-                                        <div class="datatable datatable-bordered datatable-head-custom datatable-default datatable-primary datatable-loaded" id="kt_datatable" style=""><table class="datatable-table" style="display: block;">
-                                        <table class="table table-head-custom table-vertical-center" id="kt_advance_table_widget_1">
-                                        <thead class="datatable-head">
-                                        <tr class="datatable-row" style="left: 0px;">
-                                        <th class="datatable-cell datatable-toggle-detail">
-                                        <span></span>
-										<th class="pr-0">No Urut</th>
-                                        <th>Asal Undangan</th>
-                                        <th>No Undangan</th>
-                                        <th>Tgl Undangan</th>
-                                        <th>Jenis Undangan</th>
-                                        <th>Uraian</th>
-                                        <th>Keterangan</th>
-										<th>Upload Dokumen</th>
-										<th class="pr-0 text-center">action</th>
-                                        
-									</tr>
-                                        </thead>
-                                        </table>
-                                        </div>
-                                    </div>
-                                    </div>
-									</div>
-									</div>
-									<!--end::Body-->
+										<div class="datatable datatable-bordered datatable-head-custom" id="kt_datatable"></div>
+								
 								</div>
 
 <!-- Modal Edit-->
@@ -132,11 +108,11 @@
                 </div>
                 <div class="form-group">
                     <label for="undangan_no_surat">No Undangan</label>
-                    <input type="text" name="noSurat" class="form-control noSurat"></input>
+                    <input type="text" name="nosurat" class="form-control nosurat"></input>
                 </div>
                 <div class="form-group">
                     <label for="undangan_tanggal">Tanggal</label>
-                    <input type="date" name="tanggalUndangan" class="form-control tanggalUndangan"></input>
+                    <input type="date" name="tanggalundangan" class="form-control tanggalundangan"></input>
                 </div>
                 <div class="form-group">
                     <label for="undangan_jenis_undangan">Jenis Undangan</label>
@@ -155,7 +131,7 @@
                 </div>
 				<div class="form-group">
                     <label for="undangan_upload_dokumen">Upload Dokumen</label>
-                    <input type="file" name="uploadDokumen" class="form-control uploadDokumen"></input>
+                    <input type="file" name="uploaddokumen" class="form-control uploaddokumen"></input>
                 </div>
             </form>
             <div class="modal-footer">
@@ -305,7 +281,7 @@ var KTDatatableRemoteAjaxDemo = function() {
 				autoHide: false,
 				template: function(row) {
 					return '\
-						<a href="javascript:;"  data-id="' + row.undangan_no_urut + '" data-dari="' + row.undangan_dari + '" data-noSurat="' + row.undangan_no_surat + '" data-tanggalUndangan="' + row.undangan_tanggal + '" data-jenisUndangan="' + row.undangan_jenis_undangan + '" data-uraian="' + row.undangan_uraian + '" data-keterangan="' + row.undangan_keterangan + '" data-uploadDokumen="' + row.undangan_upload_dokumen + '"  class="btn btn-sm btn-clean btn-icon btnEdit" title="Edit details">\
+						<a href="javascript:;"  data-id="' + row.undangan_no_urut + '" data-dari="' + row.undangan_dari + '" data-nosurat="' + row.undangan_no_surat + '" data-tanggalundangan="' + row.undangan_tanggal + '" data-jenisundangan="' + row.undangan_jenis_undangan + '" data-uraian="' + row.undangan_uraian + '" data-keterangan="' + row.undangan_keterangan + '" data-uploaddokumen="' + row.undangan_upload_dokumen + '"  class="btn btn-sm btn-clean btn-icon btnEdit" title="Edit details">\
 							<i class="la la-edit" ></i>\
 						</a>\
 						<a href="javascript:;" data-id="' + row.undangan_no_urut + '" class="btn btn-sm btn-clean btn-icon btnDelete" title="Delete">\
@@ -321,36 +297,36 @@ var KTDatatableRemoteAjaxDemo = function() {
 		$(document).on('click','.btnEdit',function(){
 			let id = $(this).data('id');
 			let dari = $(this).data("dari");
-			let noSurat = $(this).data("noSurat");
-			let tanggalUndangan = $(this).data("tanggalUndangan");
-			let jenisUndangan = $(this).data("jenisUndangan");
+			let nosurat = $(this).data("nosurat");
+			let tanggalundangan = $(this).data("tanggalundangan");
+			let jenisundangan = $(this).data("jenisundangan");
 			let uraian = $(this).data("uraian");
 			let keterangan = $(this).data("keterangan");
-			let uploadDokumen = $(this).data("uploadDokumen");
+			let uploaddokumen = $(this).data("uploaddokumen");
 		$.ajax({
 			url: '<?php echo base_url()."/registrasi/editdata3" ?>',
 			type: 'POST',
 			data: {
 					undangan_no_urut : id,
 					undangan_dari: dari,
-					undangan_no_surat : noSurat,
-					undangan_tanggal : tanggalUndangan,
-					undangan_jenis_undangan : jenisUndangan,
+					undangan_no_surat : nosurat,
+					undangan_tanggal : tanggalundangan,
+					undangan_jenis_undangan : jenisundangan,
 					undangan_uraian : uraian,
 					undangan_keterangan : keterangan,
-					undangan_upload_dokumen : uploadDokumen,
+					undangan_upload_dokumen : uploaddokumen,
 			},
 			dataType: 'json',
 			success: function(response){
 					$("#editModal").modal('show');
 					$('.id').val(id);
 					$('.dari').val(dari);
-					$('.noSurat').val(noSurat);
-					$('.tanggalUndangan').val(tanggalUndangan);
-					$('.jenisUndangan').val(jenisUndangan);
+					$('.nosurat').val(nosurat);
+					$('.tanggalundangan').val(tanggalundangan);
+					$('.jenisundangan').val(jenisundangan);
 					$('.uraian').val(uraian);
 					$('.keterangan').val(keterangan);
-					$('.uploadDokumen').val(uploadDokumen);
+					$('.uploaddokumen').val(uploaddokumen);
 			}
 		})
 	});
@@ -359,23 +335,23 @@ var KTDatatableRemoteAjaxDemo = function() {
 	$("#btnEdit").on('click',function(){
 		let id = $('.id').val();
 		let dari = $('.dari').val();
-		let noSurat = $('.noSurat').val();
-		let tanggalUndangan = $('.tanggalUndangan').val();
-		let jenisUndangan = $('.jenisUndangan').val();
+		let nosurat = $('.nosurat').val();
+		let tanggalundangan = $('.tanggalundangan').val();
+		let jenisundangan = $('.jenisundangan').val();
 		let uraian = $('.uraian').val();
 		let keterangan = $('.keterangan').val();
-		let uploadDokumen = $('.uploadDokumen').val();
+		let uploaddokumen = $('.uploaddokumen').val();
 		$.ajax({
 			url: '<?php echo base_url(). "/registrasi/editdata3" ?>',
 			type: 'POST',
 			data: {undangan_no_urut : id,
 					undangan_dari: dari,
-					undangan_no_surat : noSurat,
-					undangan_tanggal : tanggalUndangan,
-					undangan_jenis_undangan : jenisUndangan,
+					undangan_no_surat : nosurat,
+					undangan_tanggal : tanggalundangan,
+					undangan_jenis_undangan : jenisundangan,
 					undangan_uraian : uraian,
 					undangan_keterangan : keterangan,
-					undangan_upload_dokumen : uploadDokumen,
+					undangan_upload_dokumen : uploaddokumen,
 					},
 			success: function(response){
 					location.reload();
@@ -405,19 +381,12 @@ var KTDatatableRemoteAjaxDemo = function() {
 							type: 'POST',
 							url: '<?php echo base_url('/registrasi/hapusdata3') ?>',
 							data: {
-								register_no_urut : id,
+								undangan_no_urut : id,
 							},
 							dataType: 'json',
 							success: function(data) {
-								if (data) {
-									location.reload();
-								} else {
-									bootbox.alert({
-										message: "Oops! Something wrong",
-										backdrop: true,
-										size: 'small'
-									});
-								}
+								console.log(data);
+								location.reload();
 							},
 							error: function(xhr, desc, err) {
 								console.log(xhr.responseText);
