@@ -9,9 +9,20 @@ class Registrasi extends CI_Controller{
         $this->load->model('master_model', 'model');
     }
 
+   
     function ambildata(){
         $dataRegister = $this->model->ambildata('ref_register_surat')->result();
         echo json_encode($dataRegister);
+    }
+
+    function ambildata2(){
+        $dataTembusan = $this->model->ambildata2('ref_tembusan')->result();
+        echo json_encode($dataTembusan);
+    }
+
+    function ambildata3(){
+        $dataUndangan = $this->model->ambildata3('ref_undangan')->result();
+        echo json_encode($dataUndangan);
     }
 
     function hapusdata(){
@@ -20,10 +31,20 @@ class Registrasi extends CI_Controller{
         $this->model->hapusdata($where,'ref_register_surat');
     }
 
+    function hapusdata2(){
+        $id=$this->input->post('tembusan_no_urut');
+        $where=array('tembusan_no_urut' => $id);
+        $this->model->hapusdata2($where,'ref_tembusan');
+    }
+
+    function hapusdata3(){
+        $id=$this->input->post('undangan_no_urut');
+        $where=array('undangan_no_urut' => $id);
+        $this->model->hapusdata3($where,'ref_undangan');
+    }
+
     function editdata(){
         $id=$this->input->post('register_no_urut');
-        $data['jenissurat']=$this->model->get_jenisundangan();
-        $data['register_surat']=$this->model->get_jenisreg();
         $data=array(
             'register_tanggal_masuk' => $this->input->post('register_tanggal_masuk'),
             'register_asal_surat' => $this->input->post('register_asal_surat'),
@@ -39,19 +60,8 @@ class Registrasi extends CI_Controller{
 
         echo json_encode($dataregis);
     }
-    
-    function ambildata1(){
-        $dataTembusan = $this->model->ambildata('ref_tembusan')->result();
-        echo json_encode($dataTembusan);
-    }
 
-    function hapusdata1(){
-        $id=$this->input->post('tembusan_no_urut');
-        $where=array('tembusan_no_urut' => $id);
-        $this->model->hapusdata($where,'ref_tembusan');
-    }
-
-    function editdata1(){
+    function editdata2(){
         $id=$this->input->post('tembusan_no_urut');
         // $data['jenissurat']=$this->model->get_jenisundangan();
         // $data['register_surat']=$this->model->get_jenisreg();
@@ -62,9 +72,26 @@ class Registrasi extends CI_Controller{
             'tembusan_no_surat' => $this->input->post('tembusan_no_surat'),
             'tembusan_keterangan' => $this->input->post('tembusan_keterangan'),
         );
-        $datatembusan = $this->model->editdata($data, $id);
+        $datatembusan = $this->model->editdata2($data, $id);
 
         echo json_encode($datatembusan);
+    }
+
+    function editdata3(){
+        $id=$this->input->post('undangan_no_urut');
+        $data=array(
+            'undangan_dari' => $this->input->post('undangan_dari'),
+            'undangan_no_surat' => $this->input->post('undangan_no_surat'),
+            'undangan_tanggal' => $this->input->post('undangan_tanggal'),
+            'undangan_jenis_undangan' => $this->input->post('undangan_jenis_undangan'),
+            'undangan_uraian' => $this->input->post('undangan_uraian'),
+            'undangan_keterangan' => $this->input->post('undangan_keterangan'),
+            'undangan_upload_dokumen' => $this->input->post('undangan_upload_dokumen'),
+           
+        );
+        $dataregis = $this->model->editdata3($data, $id);
+
+        echo json_encode($dataregis);
     }
 
     public function register_surat()

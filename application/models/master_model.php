@@ -12,7 +12,25 @@ class master_model extends CI_Model {
         return $this->db->get($table);
     }
 
+    function ambildata2($table){
+        return $this->db->get($table);
+    }
+
+    function ambildata3($table){
+        return $this->db->get($table);
+    }
+
     function hapusdata($where,$table){
+        $this->db->where($where);
+        $this->db->delete($table);
+    }
+
+    function hapusdata2($where,$table){
+        $this->db->where($where);
+        $this->db->delete($table);
+    }
+
+    function hapusdata3($where,$table){
         $this->db->where($where);
         $this->db->delete($table);
     }
@@ -21,19 +39,18 @@ class master_model extends CI_Model {
         return $this->db->where('register_no_urut', $where)
             ->update('ref_register_surat', $data);
     }
-    function ambildata1($table){
-        return $this->db->get($table);
-    }
 
-    function hapusdata1($where,$table){
-        $this->db->where($where);
-        $this->db->delete($table);
-    }
-
-    function editdata1($data, $where){
+    function editdata2($data, $where){
         return $this->db->where('tembusan_no_urut', $where)
             ->update('ref_tembusan', $data);
     }
+
+    function editdata3($data, $where){
+        return $this->db->where('undangan_no_urut', $where)
+            ->update('ref_undangan', $data);
+    }
+
+    
 
         // public function get_desa(){
     //     $q1 = $this->db->select('nama_kec, id_kec')->from('ref_kec')->get()->result();

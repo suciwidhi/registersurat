@@ -83,8 +83,9 @@
 										<div class="datatable datatable-bordered datatable-head-custom" id="kt_datatable"></div>
 								
 								</div>
-                                <!-- Modal Edit-->
-    <div id="editModal" class="modal fade" role="dialog">
+                              
+ <!-- Modal Edit-->
+ <div id="editModal" class="modal fade" role="dialog">
       <div class="modal-dialog">
  
         <!-- Modal content-->
@@ -96,45 +97,24 @@
           <div class="modal-body">
             <form>
                 <div class="form-group">
-                    <label for="register_no_urut">No Urut</label>
+                    <label for="tembusan_no_urut">No Urut</label>
                     <input type="text" name="id" class="form-control id"></input>
                 </div>
                 <div class="form-group">
-                    <label for="register_tanggal_masuk">Tanggal Masuk</label>
-                    <input type="date" name="tanggal" class="form-control tanggal"></input>
+                    <label for="tembusan_asal_surat">Asal Surat</label>
+                    <input type="date" name="asalSurat" class="form-control asalSurat"></input>
                 </div>
                 <div class="form-group">
-                    <label for="register_asal_surat">Asal Surat</label>
-                    <input type="text" name="asal" class="form-control asal"></input>
+                    <label for="tembusan_tanggal_surat">Tanggal Surat</label>
+                    <input type="date" name="tanggalSurat" class="form-control tanggalSurat"></input>
                 </div>
                 <div class="form-group">
-                    <label for="register_tanggal_surat">Tanggal Surat</label>
-                    <input type="date" name="tanggalsurat" class="form-control tanggalsurat"></input>
-                <div class="form-group">
-                    <label for="register_jenis_surat">Jenis Surat</label>
-                    <select class="form-control jenis" name="jenis">
-                        <?php foreach ($register_surat as $val) { ?>
-                        <option value="<?php echo $val->jenisreg_jenis_surat ?>"><?php echo $val->jenisreg_jenis_surat ?></option>
-                        <?php } ?>
-                    </select>
-                    
-                </div>
+                    <label for="tembusan_no_surat">No Surat</label>
+                    <input type="date" name="noSurat" class="form-control noSurat"></input>
                 </div>
                 <div class="form-group">
-                    <label for="register_perihal">Perihal</label>
-                    <input type="text" name="perihal" class="form-control perihal"></input>
-                </div>
-                <div class="form-group">
-                    <label for="register_kode">Kode</label>
-                    <input type="text" name="kode" class="form-control kode"></input>
-                </div>
-                <div class="form-group">
-                    <label for="register_keterangan">Keterangan</label>
+                    <label for="tembusan_keterangan">Perihal</label>
                     <input type="text" name="keterangan" class="form-control keterangan"></input>
-                </div>
-                <div class="form-group">
-                    <label for="register_upload_dokumen">Upload Dokumen</label>
-                    <input type="file" name="upload" class="form-control upload"></input>
                 </div>
             </form>
             <div class="modal-footer">
@@ -160,7 +140,7 @@
                     type: 'remote',
                     source: {
                         read: {
-                            url: '<?php echo base_url()."/registrasi/ambildata1" ?>',
+                            url: '<?php echo base_url()."/registrasi/ambildata2" ?>',
                             // sample custom headers
                             // headers: {'x-my-custom-header': 'some value', 'x-test-header': 'the value'},
                             map: function(raw) {
@@ -212,10 +192,7 @@
                     field: 'tembusan_keterangan',
                     title: 'Keterangan',
 				},
-                    
-
-        
-				// { 
+				// {
                 //     field: 'jaspel_total',
                 //     title: 'Total',
                 //     template: function(row) {
@@ -276,100 +253,41 @@
                     autoHide: false,
                     template: function(row) {
                         return '\
-							<a href="javascript:;"  data-id="' + row.register_no_urut + '" data-tanggal="' + row.register_tanggal_masuk + '" data-asal="' + row.register_asal_surat + '" data-tanggalsurat="' + row.register_tanggal_surat + '" data-jenis="' + row.register_jenis_surat + '" data-perihal="' + row.register_perihal + '" data-kode="' + row.register_kode + '" data-keterangan="' + row.register_keterangan + '" data-upload="' + row.register_upload_dokumen + '" class="btn btn-sm btn-clean btn-icon btnEdit" title="Edit details">\
+							<a href="javascript:;"  data-id="' + row.tembusan_no_urut + '" data-asalSurat="' + row.tembusan_asal_surat + '" data-tanggalSurat="' + row.tembusan_tanggal_surat + '" data-noSurat="' + row.tembusan_no_surat + '" data-keterangan="' + row.tembusan_keterangan + '" class="btn btn-sm btn-clean btn-icon btnEdit" title="Edit details">\
 								<i class="la la-edit" ></i>\
 							</a>\
-							<a href="javascript :;" data-id="' + row.register_no_urut + '" class="btn btn-sm btn-clean btn-icon btnDelete" title="Delete">\
+							<a href="javascript:;" data-id="' + row.tembusan_no_urut + '" class="btn btn-sm btn-clean btn-icon btnDelete" title="Delete">\
 								<i class="la la-trash"></i>\
-							</a>\
-						';
+							</a>\						';
                     },
                 }],
 
             });
 
-    
-			// $(document).on("click", ".btnEdit", function(){
-                // let id = $(this).data('id');
-                // let tanggal = $(this).data("tanggal");
-                // let asal = $(this).data("asal");
-                // let tanggalsurat = $(this).data("tanggalsurat");
-                // let jenis = $(this).data("jenis");
-                // let perihal = $(this).data("perihal");
-                // let kode = $(this).data("kode");
-                // let keterangan = $(this).data("keterangan");
-                // let upload= $(this).data("upload");
-
-            //     $('#register_no_urut').val(id);
-            //     $('.register_tanggal_masuk').val(tanggal);
-            //     $('.register_asal_surat').val(asal);
-            //     $('.register_tanggal_surat').val(tanggalsurat);
-            //     $('.register_jenis_surat').val(jenis);
-            //     $('.register_perihal').val(perihal);
-            //     $('.register_kode').val(kode);
-            //     $('.register_keterangan').val(keterangan);
-            //     $('.register_upload_dokumen').val(upload);
-
-            //     $.ajax({
-            //         type: 'POST',
-            //         url: '<?php echo base_url("registrasi/editdata1")?>',
-            //         dataType: 'json',
-            //         data: {
-            //             register_no_urut: id
-            //         },
-            //         success: function(data){
-                        // $('input[name="id"]').val("");
-                        // $('input[name="tanggal').val("");
-                        // $('input[name="asal').val("");
-                        // $('input[name="tanggalsurat"]').val("");
-                        // $('input[name="jenis"]').val("");
-                        // $('input[name="perihal"]').val("");
-                        // $('input[name="kode').val("");
-                        // $('input[name="keterangan').val("");
-                        // $('input[name="upload"]').val("");
-                        // $('#editModal').Modal('show');
-
-
-            //         }
-            //         })
-            //     });  
-
             $(document).on('click','.btnEdit',function(){
                 let id = $(this).data('id');
-                let tanggal = $(this).data("tanggal");
-                let asal = $(this).data("asal");
-                let tanggalsurat = $(this).data("tanggalsurat");
-                let jenis = $(this).data("jenis");
-                let perihal = $(this).data("perihal");
-                let kode = $(this).data("kode");
+                let asalSurat = $(this).data("asalSurat");
+                let tanggalSurat = $(this).data("tanggalSurat");
+                let noSurat = $(this).data("noSurat");
                 let keterangan = $(this).data("keterangan");
-                let upload= $(this).data("upload");
             $.ajax({
-                url: '<?php echo base_url()."/registrasi/editdata" ?>',
+                url: '<?php echo base_url()."/registrasi/editdata2" ?>',
                 type: 'POST',
                 data: {
-                        register_no_urut: id,
-                        register_tanggal_masuk: tanggal,
-                        register_asal_surat: asal,
-                        register_tanggal_surat: tanggalsurat,
-                        register_jenis_surat: jenis,
-                        register_perihal: perihal,
-                        register_kode: kode,
-                        register_keterangan: keterangan,
-                        register_upload_dokumen: upload,
+						tembusan_no_urut : id,
+						tembusan_asal_surat : asalSurat,
+						tembusan_tanggal_surat : tanggalSurat,
+						tembusan_no_surat : noSurat,
+						tembusan_keterangan : keterangan,
                 },
                 dataType: 'json',
                 success: function(response){
                         $("#editModal").modal('show');
                         $('.id').val(id);
-                        $('.tanggal').val(tanggal);
-                        $('.asal').val(asal);
-                        $('.tanggalsurat').val(tanggalsurat);
-                        $('.jenis').val(jenis);
-                        $('.perihal').val(perihal);
-                        $('.kode').val(kode);
+                        $('.asalSurat').val(asalSurat);
+                        $('.tanggalSurat').val(tanggalSurat);
+                        $('.noSurat').val(noSurat);
                         $('.keterangan').val(keterangan);
-                        $('.upload').val(upload);
                 }
             })
         });
@@ -377,26 +295,18 @@
         //Meng-Update Data
         $("#btnEdit").on('click',function(){
             let id = $('.id').val();
-            let tanggal = $('.tanggal').val();
-            let asal = $('.asal').val();
-            let tanggalsurat = $('.tanggalsurat').val();
-            let jenis = $('.jenis').val();
-            let perihal = $('.perihal').val();
-            let kode = $('.kode').val();
+            let asalSurat = $('.asalSurat').val();
+            let tanggalSurat = $('.tanggalSurat').val();
+            let noSurat = $('.noSurat').val();
             let keterangan = $('.keterangan').val();
-            let upload= $('.upload').val();
             $.ajax({
-                url: '<?php echo base_url(). "/registrasi/editdata" ?>',
+                url: '<?php echo base_url(). "/registrasi/editdata2" ?>',
                 type: 'POST',
-                data: {register_no_urut: id,
-                        register_tanggal_masuk: tanggal,
-                        register_asal_surat: asal,
-                        register_tanggal_surat: tanggalsurat,
-                        register_jenis_surat: jenis,
-                        register_perihal: perihal,
-                        register_kode: kode,
-                        register_keterangan: keterangan,
-                        register_upload_dokumen: upload,
+                data: {tembusan_no_urut : id,
+						tembusan_asal_surat : asalSurat,
+						tembusan_tanggal_surat : tanggalSurat,
+						tembusan_no_surat : noSurat,
+						tembusan_keterangan : keterangan,
                         },
                 success: function(response){
                         location.reload();
@@ -425,9 +335,9 @@
                         if (result) {
                             $.ajax({
                                 type: 'POST',
-                                url: '<?php echo base_url('/registrasi/hapusdata1') ?>',
+                                url: '<?php echo base_url('/registrasi/hapusdata2') ?>',
                                 data: {
-                                    tembusan_no_urut : id,
+                                    register_no_urut : id,
                                 },
                                 dataType: 'json',
                                 success: function(data) {
