@@ -57,7 +57,7 @@
 													
 													<div class="card-footer">
 													<button type="submit" class="btn btn-success mr-2">Submit</button>
-													<button type="reset" class="btn btn-secondary">Cancel</button>
+													<a href="<?php echo site_url('registrasi/undangan_surat') ?>" class="btn btn-default">Cancel</a>
 												</div>
 												
                                                 </div>

@@ -31,9 +31,19 @@
                                                                 <li class="menu-item menu-item-submenu" data-menu-toggle="hover" aria-haspopup="true">
                                                                 <a href="<?php echo site_url('registrasi/tembusan_sekda')?>" class="menu-link">
                                                                     <span class="menu-text">Tembusan Sekda</span>
-                                                            
                                                                 </a>
                                                                 </li>
+                                                                <li class="menu-item menu-item-submenu" data-menu-toggle="hover" aria-haspopup="true">
+                                                                <a href="<?php echo site_url('registrasi/jenis_register')?>" class="menu-link">
+                                                                    <span class="menu-text">Jenis Register</span>
+                                                                </a>
+                                                                </li>
+                                                                <li class="menu-item menu-item-submenu" data-menu-toggle="hover" aria-haspopup="true">
+                                                                <a href="<?php echo site_url('registrasi/jenis_undangan')?>" class="menu-link">
+                                                                    <span class="menu-text">Jenis Undangan</span>
+                                                                </a>
+                                                                </li>
+                                                        
                                                         </ul>
                                                     </div>
                     </li>
