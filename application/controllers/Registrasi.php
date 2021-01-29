@@ -24,7 +24,14 @@ class Registrasi extends CI_Controller{
         $dataUndangan = $this->model->ambildata3('ref_undangan')->result();
         echo json_encode($dataUndangan);
     }
-
+    function ambildata4(){
+        $dataJenisRegister = $this->model->ambildata4('ref_jenisreg')->result();
+        echo json_encode($dataJenisRegister);
+    }
+    function ambildata5(){
+        $dataJenisUndangan = $this->model->ambildata5('ref_jenisundangan')->result();
+        echo json_encode($dataJenisUndangan);
+    }
     function hapusdata(){
         $id=$this->input->post('register_no_urut');
         $where=array('register_no_urut' => $id);
@@ -41,6 +48,16 @@ class Registrasi extends CI_Controller{
         $id=$this->input->post('undangan_no_urut');
         $where=array('undangan_no_urut' => $id);
         echo json_encode($this->model->hapusdata3($where,'ref_undangan'));
+    }
+    function hapusdata4(){
+        $id=$this->input->post('jenisreg_id');
+        $where=array('jenisreg_id' => $id);
+        echo json_encode($this->model->hapusdata4($where,'ref_jenisreg'));
+    }
+    function hapusdata5(){
+        $id=$this->input->post('jenisundangan_id');
+        $where=array('jenisundangan_id' => $id);
+        echo json_encode($this->model->hapusdata5($where,'ref_jenisundangan'));
     }
 
     function editdata(){
@@ -66,7 +83,7 @@ class Registrasi extends CI_Controller{
         // $data['jenissurat']=$this->model->get_jenisundangan();
         // $data['register_surat']=$this->model->get_jenisreg();
         $data=array(
-            'tembusan_no_urut' => $this->input->post('tembusan_no_urut)'),
+            // 'tembusan_no_urut' => $this->input->post('tembusan_no_urut)'),
             'tembusan_asal_surat' => $this->input->post('tembusan_asal_surat'),
             'tembusan_tanggal_surat' => $this->input->post('tembusan_tanggal_surat'),
             'tembusan_no_surat' => $this->input->post('tembusan_no_surat'),
@@ -93,6 +110,35 @@ class Registrasi extends CI_Controller{
 
         echo json_encode($dataundangan);
     }
+    function editdata4(){
+        $id=$this->input->post('jenisreg_id');
+        $data=array(
+            'jenisreg_jenis_surat' => $this->input->post('jenisreg_jenis_surat'),
+        );
+        $datajenisregister = $this->model->editdata4($data, $id);
+
+        echo json_encode($datajenisregister);
+    }
+    function editdata5(){
+        $id=$this->input->post('jenisundangan_id');
+        $data=array(
+            'jenisundangan_jenis_undangan' => $this->input->post('jenisundangan_jenis_undangan'),
+        );
+        $datajenisundangan = $this->model->editdata5($data, $id);
+
+        echo json_encode($datajenisundangan);
+    }
+
+    // function editdata4(){
+    //     $id=$this->input->post('jenisreg_id');
+    //     $data=array(
+    //         'jenisreg_jenissurat' => $this->input->post('jenisreg_jenissurat'),
+    //     );
+    //     $datajenisregister = $this->model->editdata3($data, $id);
+
+    //     echo json_encode($datajenisregister);
+    // }
+
 
     public function register_surat()
     {
@@ -106,6 +152,7 @@ class Registrasi extends CI_Controller{
     {
         $data['content'] = 'und_surat';
         $data['active'] = 'undangan';
+        $data['undangan_surat']=$this->model->get_jenisundangan();
         $this->load->view('layouts/master', $data);
     }
 
@@ -115,6 +162,19 @@ class Registrasi extends CI_Controller{
         $data['active'] = 'tembusan';
         $this->load->view('layouts/master', $data);
     }
+    public function jenis_register()
+    {
+        $data['content']='jenis_register';
+        $data['active']="jenis_register";
+        $this->load->view('layouts/master',$data);
+    }
+    public function jenis_undangan()
+    {
+        $data['content']='jenis_undangan';
+        $data['active']="jenis_undangan";
+        $this->load->view('layouts/master',$data);
+    }
+
 
     public function add_register_surat()
     {
@@ -137,6 +197,18 @@ class Registrasi extends CI_Controller{
         $data['active'] = 'add_undangan';
         $data['cats'] = $this->model->get_jenisundangan();
         $this->load->view('layouts/master', $data);
+    }
+    public function add_jenis_register()
+    {
+        $data['content']='add_jenis_register';
+        $data['active']='add_jenisregister';
+        $this->load->view('layouts/master',$data);
+    }
+    public function add_jenis_undangan()
+    {
+        $data['content']='add_jenis_undangan';
+        $data['active']='add_jenisundangan';
+        $this->load->view('layouts/master',$data);
     }
     function tambahRegister()
     {
@@ -237,6 +309,24 @@ class Registrasi extends CI_Controller{
         );
         $tembusan_no_urut = $this->model->tambahTembusan($data_tembusan);
         redirect('/registrasi/tembusan_sekda');
+    }
+    function tambahJenisRegister()
+    {
+        $data_jenisreg = array(
+            // 'berita_user_id' => $this->session->userdata('user_id'),
+            'jenisreg_jenis_surat' => $this->input->post('tambah_jenisreg_jenis_surat'),
+        );
+        $jenisreg_id = $this->model->tambahJenisRegister($data_jenisreg);
+        redirect('/registrasi/jenis_register');
+    }
+    function tambahJenisUndangan()
+    {
+        $data_jenisund= array(
+            // 'berita_user_id' => $this->session->userdata('user_id'),
+            'jenisundangan_jenis_undangan' => $this->input->post('tambah_jenisundangan_jenis_undangan'),
+        );
+        $jenisundangan_id = $this->model->tambahJenisUndangan($data_jenisund);
+        redirect('/registrasi/jenis_undangan');
     }
     function tambahUndangan()
     {

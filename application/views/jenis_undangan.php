@@ -11,7 +11,7 @@
 									<!--begin::Header-->
 									<div class="card-header flex-wrap border-0 pt-6 pb-0">
 										<div class="card-title">
-											<h3 class="card-label">List Undangan
+											<h3 class="card-label">List Jenis Surat Undangan
 										</div>
 										<div class="card-toolbar">
 											<!--begin::Dropdown-->
@@ -64,7 +64,7 @@
 											</div>
 											<!--end::Dropdown-->
 											<!--begin::Button-->
-											<a href="<?php echo site_url('Registrasi/add_undangan_surat')?>" class="btn btn-primary font-weight-bolder">
+											<a href="<?php echo site_url('Registrasi/add_jenis_undangan')?>" class="btn btn-primary font-weight-bolder">
 											<span class="svg-icon svg-icon-md">
 												<!--begin::Svg Icon | path:/metronic/theme/html/demo2/dist/assets/media/svg/icons/Design/Flatten.svg-->
 												<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -99,47 +99,19 @@
           <div class="modal-body">
             <form>
                 <div class="form-group">
-                    <label for="undangan_no_urut">No Urut</label>
+                    <label for="jenisundangan_id">No Urut</label>
                     <input type="text" name="id" class="form-control id"></input>
                 </div>
                 <div class="form-group">
-                    <label for="undangan_dari">Dari</label>
-                    <input type="text" name="dari" class="form-control dari"></input>
-                </div>
-                <div class="form-group">
-                    <label for="undangan_no_surat">No Undangan</label>
-                    <input type="text" name="nosurat" class="form-control nosurat"></input>
-                </div>
-                <div class="form-group">
-                    <label for="undangan_tanggal">Tanggal</label>
-                    <input type="date" name="tanggalundangan" class="form-control tanggalundangan"></input>
-                </div>
-                <div class="form-group">
-                    <label for="undangan_jenis_undangan">Jenis Undangan</label>
-					<select class="form-control jenis" name="jenis">
-                        <?php foreach ($undangan_surat as $val) { ?>
-                        <option value="<?php echo $val->jenisundangan_jenis_undangan ?>"><?php echo $val->jenisundangan_jenis_undangan ?></option>
-                        <?php } ?>
-                    </select>
-                <div class="form-group">
-                    <label for="undangan_uraian">Uraian</label>
-                    <input type="text" name="uraian" class="form-control uraian"></input>
-                </div>
-                <div class="form-group">
-                    <label for="undangan_keterangan">Keterangan</label>
-                    <input type="text" name="keterangan" class="form-control keterangan"></input>
-                </div>
-				<div class="form-group">
-                    <label for="undangan_upload_dokumen">Upload Dokumen</label>
-                    <input type="file" name="uploaddokumen" class="form-control uploaddokumen"></input>
+                    <label for="jenisundangan_jenis_undangan">Jenis Undangan</label>
+                    <input type="text" name="jenissurat" class="form-control jenissurat"></input>
                 </div>
             </form>
             <div class="modal-footer">
            <button type="button" class="btn btn-success" id="btnEdit">Update</button>
            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           </div>
-          </div>
-        </div>
+
 <script type="text/javascript">
 
 var KTDatatableRemoteAjaxDemo = function() {
@@ -154,7 +126,7 @@ var KTDatatableRemoteAjaxDemo = function() {
 				type: 'remote',
 				source: {
 					read: {
-						url: '<?php echo base_url()."/registrasi/ambildata3" ?>',
+						url: '<?php echo base_url()."/registrasi/ambildata5" ?>',
 						// sample custom headers
 						// headers: {'x-my-custom-header': 'some value', 'x-test-header': 'the value'},
 						map: function(raw) {
@@ -191,34 +163,35 @@ var KTDatatableRemoteAjaxDemo = function() {
 
 			// columns definition
 			columns: [{
-				field: 'undangan_no_urut',
+				field: 'jenisundangan_id',
 				title: 'No'
 			},{
-				field: 'undangan_dari',
-				title: 'Dari',
-			},{
-				field: 'undangan_no_surat',
-				title: 'No Undangan',
-			},{
-				field: 'undangan_tanggal',
-				title: 'Tgl Undangan',
-			}, {
-				field: 'undangan_jenis_undangan',
+				field: 'jenisundangan_jenis_undangan',
 				title: 'Jenis Undangan',
-			},{
-				field: 'undangan_uraian',
-				title: 'Uraian',
-			},{
-				field: 'undangan_keterangan',
-				title: 'Keterangan',
-			},{
-				field: 'undangan_upload_dokumen',
-				title: 'Dokumen',
-				template: function(row) {
-                        return '<a href="<?php echo base_url()?>/assets/uploads/konten/undangan/'+row.undangan_upload_dokumen+'" " class="btn btn-sm btn-clean btn-icon" title="Download"><i class="fa fa-download"></i></a>'
-                            // return row.register_upload_dokumen + 'test';
-                    }
-				},
+            },
+			// },{
+			// 	field: 'undangan_no_surat',
+			// 	title: 'No Undangan',
+			// },{
+			// 	field: 'undangan_tanggal',
+			// 	title: 'Tgl Undangan',
+			// }, {
+			// 	field: 'undangan_jenis_undangan',
+			// 	title: 'Jenis Undangan',
+			// },{
+			// 	field: 'undangan_uraian',
+			// 	title: 'Uraian',
+			// },{
+			// 	field: 'undangan_keterangan',
+			// 	title: 'Keterangan',
+			// },{
+			// 	field: 'undangan_upload_dokumen',
+			// 	title: 'Dokumen',
+			// 	template: function(row) {
+                        // return '<a href="<?php echo base_url()?>/assets/uploads/konten/undangan/'+row.undangan_upload_dokumen+'" " class="btn btn-sm btn-clean btn-icon" title="Download"><i class="fa fa-download"></i></a>'
+                        //     // return row.register_upload_dokumen + 'test';
+            //         }
+			// 	},
 			
 			// {
 			//     field: 'jaspel_total',
@@ -281,10 +254,10 @@ var KTDatatableRemoteAjaxDemo = function() {
 				autoHide: false,
 				template: function(row) {
 					return '\
-						<a href="javascript:;"  data-id="' + row.undangan_no_urut + '" data-dari="' + row.undangan_dari + '" data-nosurat="' + row.undangan_no_surat + '" data-tanggalundangan="' + row.undangan_tanggal + '" data-jenisundangan="' + row.undangan_jenis_undangan + '" data-uraian="' + row.undangan_uraian + '" data-keterangan="' + row.undangan_keterangan + '" data-uploaddokumen="' + row.undangan_upload_dokumen + '"  class="btn btn-sm btn-clean btn-icon btnEdit" title="Edit details">\
+						<a href="javascript:;"  data-id="' + row.jenisundangan_id+ '" data-jenissurat="' + row.jenisundangan_jenis_undangan + '" class="btn btn-sm btn-clean btn-icon btnEdit" title="Edit details">\
 							<i class="la la-edit" ></i>\
 						</a>\
-						<a href="javascript:;" data-id="' + row.undangan_no_urut + '" class="btn btn-sm btn-clean btn-icon btnDelete" title="Delete">\
+						<a href="javascript:;" data-id="' + row.jenisundangan_id + '"data-jenissurat="' + row.jenisundangan_jenis_undangan + '" class="btn btn-sm btn-clean btn-icon btnDelete" title="Delete">\
 							<i class="la la-trash"></i>\
 						</a>\
 					';
@@ -296,37 +269,19 @@ var KTDatatableRemoteAjaxDemo = function() {
 
 		$(document).on('click','.btnEdit',function(){
 			let id = $(this).data('id');
-			let dari = $(this).data("dari");
-			let nosurat = $(this).data("nosurat");
-			let tanggalundangan = $(this).data("tanggalundangan");
-			let jenisundangan = $(this).data("jenisundangan");
-			let uraian = $(this).data("uraian");
-			let keterangan = $(this).data("keterangan");
-			let uploaddokumen = $(this).data("uploaddokumen");
+			let jenissurat = $(this).data("jenissurat");
 		$.ajax({
-			url: '<?php echo base_url()."/registrasi/editdata3" ?>',
+			url: '<?php echo base_url()."/registrasi/editdata5" ?>',
 			type: 'POST',
 			data: {
-					undangan_no_urut : id,
-					undangan_dari: dari,
-					undangan_no_surat : nosurat,
-					undangan_tanggal : tanggalundangan,
-					undangan_jenis_undangan : jenisundangan,
-					undangan_uraian : uraian,
-					undangan_keterangan : keterangan,
-					undangan_upload_dokumen : uploaddokumen,
+					jenisreg_id : id,
+					jenisundangan_jenis_undangan: jenissurat,
 			},
 			dataType: 'json',
 			success: function(response){
 					$("#editModal").modal('show');
 					$('.id').val(id);
-					$('.dari').val(dari);
-					$('.nosurat').val(nosurat);
-					$('.tanggalundangan').val(tanggalundangan);
-					$('.jenisundangan').val(jenisundangan);
-					$('.uraian').val(uraian);
-					$('.keterangan').val(keterangan);
-					$('.uploaddokumen').val(uploaddokumen);
+					$('.jenissurat').val(jenissurat);
 			}
 		})
 	});
@@ -334,24 +289,12 @@ var KTDatatableRemoteAjaxDemo = function() {
 	//Meng-Update Data
 	$("#btnEdit").on('click',function(){
 		let id = $('.id').val();
-		let dari = $('.dari').val();
-		let nosurat = $('.nosurat').val();
-		let tanggalundangan = $('.tanggalundangan').val();
-		let jenisundangan = $('.jenisundangan').val();
-		let uraian = $('.uraian').val();
-		let keterangan = $('.keterangan').val();
-		let uploaddokumen = $('.uploaddokumen').val();
+		let jenissurat = $('.jenissurat').val();
 		$.ajax({
-			url: '<?php echo base_url(). "/registrasi/editdata3" ?>',
+			url: '<?php echo base_url(). "/registrasi/editdata5" ?>',
 			type: 'POST',
-			data: {undangan_no_urut : id,
-					undangan_dari: dari,
-					undangan_no_surat : nosurat,
-					undangan_tanggal : tanggalundangan,
-					undangan_jenis_undangan : jenisundangan,
-					undangan_uraian : uraian,
-					undangan_keterangan : keterangan,
-					undangan_upload_dokumen : uploaddokumen,
+			data: {jenisundangan_id : id,
+					jenisundangan_jenis_undangan: jenissurat,
 					},
 			success: function(response){
 					location.reload();
@@ -379,9 +322,9 @@ var KTDatatableRemoteAjaxDemo = function() {
 					if (result) {
 						$.ajax({
 							type: 'POST',
-							url: '<?php echo base_url('/registrasi/hapusdata3') ?>',
+							url: '<?php echo base_url('/registrasi/hapusdata5') ?>',
 							data: {
-								undangan_no_urut : id,
+								jenisundangan_id : id,
 							},
 							dataType: 'json',
 							success: function(data) {

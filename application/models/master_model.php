@@ -19,6 +19,13 @@ class master_model extends CI_Model {
     function ambildata3($table){
         return $this->db->get($table);
     }
+    function ambildata4($table){
+        return $this->db->get($table);
+    }
+    function ambildata5($table){
+        return $this->db->get($table);
+    }
+
 
     function hapusdata($where,$table){
         $this->db->where($where);
@@ -31,6 +38,14 @@ class master_model extends CI_Model {
     }
 
     function hapusdata3($where,$table){
+        $this->db->where($where);
+        $this->db->delete($table);
+    }
+    function hapusdata4($where,$table){
+        $this->db->where($where);
+        $this->db->delete($table);
+    }
+    function hapusdata5($where,$table){
         $this->db->where($where);
         $this->db->delete($table);
     }
@@ -48,6 +63,14 @@ class master_model extends CI_Model {
     function editdata3($data, $where){
         return $this->db->where('undangan_no_urut', $where)
             ->update('ref_undangan', $data);
+    }
+    function editdata4($data, $where){
+        return $this->db->where('jenisreg_id', $where)
+            ->update('ref_jenisreg', $data);
+    }
+    function editdata5($data, $where){
+        return $this->db->where('jenisundangan_id', $where)
+            ->update('ref_jenisundangan', $data);
     }
 
 
@@ -83,13 +106,13 @@ class master_model extends CI_Model {
     // public function get_undangan(){
     //     return $this->db->get('ref_undangan')->result();
     // }
-    public function list_register_surat($id)
-    {
-        $this->db->select('*');
-        // $this->db->where('pasien_lokasi_id', $id);
-        $this->db->order_by('register_no_urut', 'desc');
-        return $this->db->get('ref_pasien')->result();
-    }
+    // public function list_register_surat($id)
+    // {
+    //     $this->db->select('*');
+    //     // $this->db->where('pasien_lokasi_id', $id);
+    //     $this->db->order_by('register_no_urut', 'desc');
+    //     return $this->db->get('ref_pasien')->result();
+    // }
 
     public function tambahUndangan($data_undangan)
     {
@@ -106,6 +129,16 @@ class master_model extends CI_Model {
     public function tambahTembusan($data_tembusan)
     {
         $this->db->insert('ref_tembusan', $data_tembusan);
+        return $this->db->insert_id();
+    }
+    public function tambahJenisRegister($data_jenisreg)
+    {
+        $this->db->insert('ref_jenisreg', $data_jenisreg);
+        return $this->db->insert_id();
+    }
+    public function tambahJenisUndangan($data_jenisund)
+    {
+        $this->db->insert('ref_jenisundangan',$data_jenisund);
         return $this->db->insert_id();
     }
 
