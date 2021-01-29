@@ -15,7 +15,6 @@
 													<span class="menu-desc"></span>
 													<i class="menu-arrow"></i>
 												</a>
-                                               
                                                     <div class="menu-submenu menu-submenu-classic menu-submenu-left" data-hor-direction="menu-submenu-left">
                                                         <ul class="menu-subnav">
                                                                 <li class="menu-item menu-item-submenu" data-menu-toggle="hover" aria-haspopup="true">
@@ -33,23 +32,33 @@
                                                                     <span class="menu-text">Tembusan Sekda</span>
                                                                 </a>
                                                                 </li>
-                                                                <li class="menu-item menu-item-submenu" data-menu-toggle="hover" aria-haspopup="true">
+                                                                <li class="menu-item menu-item-submenu undangan" data-menu-toggle="hover" aria-haspopup="true">
                                                                 <a href="<?php echo site_url('registrasi/jenis_undangan')?>" class="menu-link">
                                                                     <span class="menu-text">List Undangan</span>
                                                                 </a>
                                                                 </li>
-                                                                <li class="menu-item menu-item-submenu" data-menu-toggle="hover" aria-haspopup="true">
+                                                                <li class="menu-item menu-item-submenu jenis" data-menu-toggle="hover" aria-haspopup="true">
                                                                 <a href="<?php echo site_url('registrasi/jenis_register')?>" class="menu-link">
                                                                     <span class="menu-text">List Jenis Surat</span>
                                                                 </a>
                                                                 </li>
                                                         </ul>
                                                     </div>
+
+                        
                     </li>
             </ul>
         </div>
     </div>
-    
-   
-    
+<script>
+    <?php if($this->session->userdata('user_prev') == 2){ ?>
+ 
+ $(document).ready(function(){
 
+   $(".undangan").remove();
+   $(".jenis").remove();
+
+ }); 
+ <?php } else {}; ?>
+
+</script>
