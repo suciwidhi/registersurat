@@ -9,15 +9,16 @@ class master_model extends CI_Model {
     }
 
     function ambildata($table){
-        return $this->db->get($table);
+
+        return $this->db->select('*')->from($table)->order_by('register_tanggal_masuk', 'DESC')->get()->result();
     }
 
     function ambildata2($table){
-        return $this->db->get($table);
+        return $this->db->select('*')->from($table)->order_by('tembusan_tanggal_surat', 'DESC')->get()->result();
     }
 
     function ambildata3($table){
-        return $this->db->get($table);
+        return $this->db->select('*')->from($table)->order_by('undangan_tanggal', 'DESC')->get()->result();
     }
     function ambildata4($table){
         return $this->db->get($table);

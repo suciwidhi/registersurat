@@ -11,17 +11,17 @@ class Registrasi extends CI_Controller{
 
    
     function ambildata(){
-        $dataRegister = $this->model->ambildata('ref_register_surat')->result();
+        $dataRegister = $this->model->ambildata('ref_register_surat');
         echo json_encode($dataRegister);
     }
 
     function ambildata2(){
-        $dataTembusan = $this->model->ambildata2('ref_tembusan')->result();
+        $dataTembusan = $this->model->ambildata2('ref_tembusan');
         echo json_encode($dataTembusan);
     }
 
     function ambildata3(){
-        $dataUndangan = $this->model->ambildata3('ref_undangan')->result();
+        $dataUndangan = $this->model->ambildata3('ref_undangan');
         echo json_encode($dataUndangan);
     }
     function ambildata4(){
