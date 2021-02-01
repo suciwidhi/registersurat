@@ -5,7 +5,7 @@
             <ul class="menu-nav">
                 <li class="menu-item menu-item-rel <?php if ($this->uri->segment(1) == "") : ?> menu-item-active <?php endif ?>" data-menu-toggle="click" aria-haspopup="true">
                     <a href="<?php echo site_url('/') ?>" class="menu-link">
-                        <span class="menu-text">Dashboard</span>
+                        <span class="menu-text">Dashboard Admin</span>
                         <i class="menu-arrow"></i>
                     </a>
                     </li>
@@ -55,8 +55,8 @@
  
  $(document).ready(function(){
 
-   $(".undangan").remove();
-   $(".jenis").remove();
+   $(".undangan").hide();
+   $(".jenis").hide();
 
  }); 
  <?php } else {}; ?>
